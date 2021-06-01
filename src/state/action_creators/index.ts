@@ -18,7 +18,7 @@ export const searchRepositories = (term: string) => {
           },
         }
       );
-      const names = data.object.map((result: any) => {
+      const names = data.objects.map((result: any) => {
         return result.package.name;
       });
 
@@ -26,10 +26,10 @@ export const searchRepositories = (term: string) => {
         type: ActionType.SEARCH_REPOSITORIES_SUCCESS,
         payload: names,
       });
-    } catch (error) {
+    } catch (err) {
       dispatch({
         type: ActionType.SEARCH_REPOSITORIES_ERROR,
-        payload: error.message,
+        payload: err.message,
       });
     }
   };
